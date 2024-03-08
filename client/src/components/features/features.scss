@@ -3,13 +3,25 @@
 .features {
   flex-grow: 1;
   //flex-direction, justify-content, align-items, gap
-  @include flex(row, space-between, center, null);
+  @include flex(row, space-between, null, 4rem);
+  flex-wrap: wrap;
   padding: 40px;
+
+  @include md {
+    justify-content: center;
+  }
 
   &_card {
     @include flex(column, null, center, 2rem);
-    width: 32%;
-    
+    width: 31%;
+
+    @include md {
+      width: 45%;
+    }
+
+    @include sm {
+      width: 100%;
+    }
 
     &_img {
       @include flex(row, center, center, null);

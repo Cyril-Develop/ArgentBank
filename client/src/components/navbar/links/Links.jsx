@@ -10,19 +10,19 @@ const Links = () => {
       {!connected ? (
         <li>
           <Link to="/login">
-            <CircleUserRound /> Sign in
+            <CircleUserRound /> <span>Sign in</span> 
           </Link>
         </li>
       ) : (
         <>
           <li>
             <Link to="/dashboard">
-              <CircleUserRound /> Martin
+              <CircleUserRound /> <span>Martin</span>  
             </Link>
           </li>
           <li>
             <Link to="/logout">
-              <LogOut /> Sign Out
+              <LogOut /> <span>Sign Out</span> 
             </Link>
           </li>
         </>

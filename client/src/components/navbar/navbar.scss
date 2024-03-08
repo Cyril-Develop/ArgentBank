@@ -8,12 +8,16 @@
   color: $color-dark;
   font-size: clamp(2rem, 2vw, 2rem);
 
-  a{
+  @include sm {
+    padding: 0 2rem;
+  }
+
+  a {
     display: inline-block;
     @include flex(column, center, null, null);
-    height: 40%;
+    height: clamp(20%, 5vw, 40%);
 
-    img{
+    img {
       height: 100%;
     }
   }
@@ -23,6 +27,12 @@
     li {
       a {
         @include flex(row, null, center, 1rem);
+
+        span{
+          @include sm {
+            display: none;
+          }
+        }
       }
     }
   }
