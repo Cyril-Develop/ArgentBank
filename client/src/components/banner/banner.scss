@@ -1,0 +1,21 @@
+@import "../../sass/main.scss";
+
+.banner {
+  //flex-direction, justify-content, align-items, gap
+  @include flex(row, flex-end, center, null);
+  padding: 0 10rem;
+  width: 100%;
+  height: 40rem;
+  background-image: url("../../assets/bank-tree.jpeg");
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &_content {
+    @include flex(column, null, null, 2rem);
+    padding: 3rem;
+    font-size: clamp(1.8rem, 1.8vw, 1.8rem);
+    background-color: $color-light;
+    width: 25%;
+  }
+}
