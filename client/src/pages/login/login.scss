@@ -11,7 +11,7 @@
     height: fit-content;
     margin-top: 4rem;
     padding: 2rem;
-    width: 100%;
+    width: 90%;
     max-width: 30rem;
     background-color: $color-light;
 
@@ -31,7 +31,8 @@
           font-weight: bold;
         }
         input {
-          padding: 0.5rem;
+          height: 4rem;
+          padding-left: 1rem;
         }
       }
       &_check {
@@ -44,7 +45,31 @@
 
       &_btn {
         @include btn;
+        @include flex(row, center, center, 1rem);
+      }
+
+      &_error {
+        color: $color-error;
+      }
+
+      &_spinner {
+        height: 1.5rem;
+        width: 1.5rem;
+        border-radius: 50%;
+        border: 0.2rem solid $color-green;
+        border-top: 0.2rem solid $color-light;
+        border-bottom: 0.2rem solid $color-light;
+        animation: spin 1s linear infinite;
       }
     }
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

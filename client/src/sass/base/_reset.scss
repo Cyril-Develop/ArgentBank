@@ -12,6 +12,11 @@ html {
   color: $color-dark;
 }
 
+body{
+  max-width: 2600px;
+  margin: 0 auto;
+}
+
 li {
   list-style: none;
 }

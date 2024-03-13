@@ -3,7 +3,7 @@
 .features {
   flex-grow: 1;
   //flex-direction, justify-content, align-items, gap
-  @include flex(row, space-between, null, 4rem);
+  @include flex(row, center, center, 4rem);
   flex-wrap: wrap;
   padding: 40px;
 
@@ -12,7 +12,9 @@
   }
 
   &_card {
-    @include flex(column, null, center, 2rem);
+    @include flex(column, flex-start, center, 2rem);
+    padding: 0 5rem;
+    height: fit-content;
     width: 31%;
 
     @include md {

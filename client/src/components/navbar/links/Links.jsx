@@ -1,13 +1,18 @@
 import { CircleUserRound, LogOut } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../../store/slices/authSlices";
 
 const Links = () => {
 
-  const connected = false;
+  const { token } = useSelector((state) => state.login);
+  const { user } = useSelector((state) => state.user);
+
+  const dispatch = useDispatch();
 
   return (
     <>
-      {!connected ? (
+      {!token ? (
         <li>
           <Link to="/login">
             <CircleUserRound /> <span>Sign in</span> 
@@ -16,12 +21,12 @@ const Links = () => {
       ) : (
         <>
           <li>
-            <Link to="/dashboard">
-              <CircleUserRound /> <span>Martin</span>  
+            <Link to="/profile">
+              <CircleUserRound /> <span>{user.firstName}</span>  
             </Link>
           </li>
           <li>
-            <Link to="/logout">
+            <Link to="/login" onClick={() => dispatch(logout())}>
               <LogOut /> <span>Sign Out</span> 
             </Link>
           </li>

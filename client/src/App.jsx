@@ -5,19 +5,32 @@ import Footer from "./components/footer/Footer";
 import Login from "./pages/login/Login";
 import Profile from "./pages/profile/Profile";
 import NotFound from "./pages/notFound/NotFound";
-import Transaction from "./pages/transaction/Transaction";
+import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 
 const Layout = ({ children }) => {
+
   return (
     <>
       <Navbar />
       {children}
       <Footer />
-    </>
+      </>
   );
 };
 
+const PrivateRoute = ({ children }) => {
+  const { token } = useSelector((state) => state.login);
+  if (token) {
+    return children;
+  } else {
+    return <Navigate to="/login" />;
+  }
+}
+
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -30,17 +43,26 @@ function App() {
       children: [
         { path: "/", element: <Home /> },
         { path: "/login", element: <Login /> },
-        { path: "/profile", element: <Profile /> },
-        { path: "/transaction/:accountId", element: <Transaction /> },
+        {
+          path: "/profile",
+          element: 
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        },
       ],
     },
     {
-      path:"*",
-      element: <NotFound />
-    }
+      path: "*",
+      element: <NotFound />,
+    },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    
+      <RouterProvider router={router} />
+    
+  );
 }
 
 export default App;

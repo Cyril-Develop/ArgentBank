@@ -29,6 +29,10 @@
         @include flex(row, null, center, 1rem);
 
         span{
+          &:hover {
+            text-decoration: underline;
+          }
+
           @include sm {
             display: none;
           }

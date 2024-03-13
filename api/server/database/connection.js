@@ -4,7 +4,7 @@ const databaseUrl = `mongodb+srv://${process.env.DATABASE_USER}:${process.env.DA
 
 module.exports = async () => {
   try {
-    await mongoose.connect(databaseUrl, { useNewUrlParser: true })
+    await mongoose.connect(databaseUrl)
     console.log('Database successfully connected')
   } catch (error) {
     console.error(`Database Connectivity Error: ${error}`)
