@@ -19,6 +19,35 @@ export const getUserAsync = createAsyncThunk("user/getUser", async (token) => {
   }
 });
 
+export const updateUserAsync = createAsyncThunk(
+  "user/updateUser",
+  async ({ token, firstName, lastName }) => {
+    console.log(token, firstName, lastName);
+    try {
+      const response = await fetch(
+        "http://localhost:3001/api/v1/user/profile",
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ firstName, lastName }),
+        }
+      );
+
+      const data = await response.json();
+      console.log(data);
+      if (!response.ok) {
+        throw new Error(data.message);
+      }
+      return data.body;
+    } catch (error) {
+      throw error;
+    }
+  }
+);
+
 const user = createSlice({
   name: "user",
   initialState: {
@@ -27,8 +56,8 @@ const user = createSlice({
     error: null,
   },
   reducers: {
-    logout(state) {
-      state.user = {};
+    setUser(state, action) {
+      state.user = action.payload;
     },
   },
   extraReducers(builder) {
@@ -48,5 +77,5 @@ const user = createSlice({
   },
 });
 
-export const { logout } = user.actions;
+export const { setUser } = user.actions;
 export default user.reducer;
