@@ -22,7 +22,6 @@ export const getUserAsync = createAsyncThunk("user/getUser", async (token) => {
 export const updateUserAsync = createAsyncThunk(
   "user/updateUser",
   async ({ token, firstName, lastName }) => {
-    console.log(token, firstName, lastName);
     try {
       const response = await fetch(
         "http://localhost:3001/api/v1/user/profile",
