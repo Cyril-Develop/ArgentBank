@@ -23,7 +23,7 @@ const EditName = ({ handleEditName }) => {
       })
     )
       .then((data) => {
-        if(data.error.message === "jwt expired") {
+        if(data.error && data.error.message === "jwt expired") {
           dispatch(logout())
         }
         const { firstName, lastName } = data.payload;

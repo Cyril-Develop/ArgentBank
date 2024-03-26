@@ -4,7 +4,7 @@ export const loginAsync = createAsyncThunk(
   "auth/login",
   async (credentials) => {
     try {
-      const response = await fetch(`http://localhost:3001/api/v1/user/login`, {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_BASE_URL}/user/login`, {
         method: "POST",
         body: JSON.stringify(credentials),
         headers: {
