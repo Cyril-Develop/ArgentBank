@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateUserAsync } from "../../store/slices/userSlices";
 import { setUser } from "../../store/slices/userSlices";
+import { logout } from "../../store/slices/authSlices";
 
 const EditName = ({ handleEditName }) => {
   const dispatch = useDispatch();
@@ -22,6 +23,9 @@ const EditName = ({ handleEditName }) => {
       })
     )
       .then((data) => {
+        if(data.error.message === "jwt expired") {
+          dispatch(logout())
+        }
         const { firstName, lastName } = data.payload;
         dispatch(setUser({ firstName, lastName }));
         handleEditName();

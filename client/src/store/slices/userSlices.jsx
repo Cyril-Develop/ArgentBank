@@ -34,12 +34,10 @@ export const updateUserAsync = createAsyncThunk(
           body: JSON.stringify({ firstName, lastName }),
         }
       );
-
       const data = await response.json();
-      console.log(data);
       if (!response.ok) {
         throw new Error(data.message);
-      }
+      } 
       return data.body;
     } catch (error) {
       throw error;
