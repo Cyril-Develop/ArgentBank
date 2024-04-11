@@ -23,6 +23,23 @@ DATABASE_PASSWORD = "NqZamtCvB49XwSqI"
 DATABASE_NAME = "Cluster1"
 ```
 
+## Utilisateurs :
+
+Tony Stark
+
+    First Name: Tony
+    Last Name: Stark
+    Email: tony@stark.com
+    Password: password123
+
+Steve Rogers
+
+    First Name: Steve,
+    Last Name: Rogers,
+    Email: steve@rogers.com,
+    Password: password456
+
+
 Lancer les serveurs dans chaque dossier avec la commande `npm start`
 
 ## Technologies :
